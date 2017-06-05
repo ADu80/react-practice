@@ -9,20 +9,27 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'babel-loader'
+            use: 'babel-loader'
         }, {
             test: /\.css$/,
-            exclude: /node_modules/,
-            loader: 'style-loader!css-loader?modules'
+            use: ['style-loader', 'css-loader']
+        }, {
+            test: /\.(eot(\?v=\d+\.\d+\.\d+)?)|((woff|woff2)(\?v=\d+\.\d+\.\d+)?)|(ttf(\?v=\d+\.\d+\.\d+)?)|(svg(\?v=\d+\.\d+\.\d+)?)$/,
+            include: [path.join(__dirname, 'node_modules/bootstrap/dist')],
+            use: 'url-loader?limit=1024&name=/css/bootstrap/[name].[ext]'
         }]
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src/index.html'),
             filename: 'index.html'
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
         })
     ],
     devServer: {
