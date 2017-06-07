@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import style from './index.css';
+import styles from './index.css';
+import SideBar from '../SideBar';
+import Page from '../Page';
+
 
 export default class App extends Component {
     constructor(props) {
@@ -8,12 +11,10 @@ export default class App extends Component {
 
     render() {
         return (
-            <article className="row">
-                <section className="col-md-3 border-right">col-md-3</section>
-                <section className="col-md-9">
-                    <h1 className="title">a simple project</h1>
-                </section>
-            </article>
+            <article className="container-full">
+            <SideBar />
+            <Page />
+        </article>
         );
     }
 }

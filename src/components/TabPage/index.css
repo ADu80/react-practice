@@ -1,0 +1,47 @@
+.tab-page {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    line-height: 40px;
+}
+
+.tab-page > * {
+    vertical-align: middle;
+}
+
+.tab-title-check {
+    position: absolute;
+    left: -9999px;
+}
+
+.tab-title {
+    margin: 0;
+    padding: 0 10px;
+    border-right: solid 1px #e9e9e9;
+    color: #888;
+}
+
+.tab-title:hover {
+	background: #eee;
+}
+
+.tab-title-check:checked ~ .tab-title {
+    background: #405060;
+    color: #fff;
+}
+
+.tab-content {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    right: 0;
+    bottom: 0;
+    border-top: solid 2px #405060;
+    display: none;
+}
+
+.tab-title-check:checked ~ .tab-content {
+    display: flex;
+}
