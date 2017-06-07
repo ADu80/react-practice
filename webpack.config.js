@@ -15,7 +15,7 @@ module.exports = {
             use: 'babel-loader'
         }, {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader']
+            use: ['style-loader', 'css-loader', 'postcss-loader']
         }, {
             test: /\.(eot(\?v=\d+\.\d+\.\d+)?)|((woff|woff2)(\?v=\d+\.\d+\.\d+)?)|(ttf(\?v=\d+\.\d+\.\d+)?)|(svg(\?v=\d+\.\d+\.\d+)?)$/,
             include: [path.join(__dirname, 'node_modules/bootstrap/dist')],

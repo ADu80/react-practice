@@ -7,6 +7,10 @@
     line-height: 40px;
 }
 
+.tab-page.default .tab-title {
+    padding: 0 20px;
+}
+
 .tab-page > * {
     vertical-align: middle;
 }
@@ -24,7 +28,7 @@
 }
 
 .tab-title:hover {
-	background: #eee;
+    background: #eee;
 }
 
 .tab-title-check:checked ~ .tab-title {

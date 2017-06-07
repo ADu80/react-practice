@@ -13,13 +13,18 @@ export default class Page extends Component {
     render() {
         return (
             <article className="page">
-    <TopBar />
-    <ul className="tab">
-        {
-            pages.map(el=><TabPage key={el.title} tabTitle={el.title} page={el.page} />)
-        }
-    </ul>
-    <Footer />
-</article>);
+                <TopBar />
+                <ul className="tab">
+                    <li className="tab-page default"><label className="tab-title"></label></li>
+                    {
+                        pages.map(el=>
+                            <TabPage key={el.id} title={el.title} path={el.path}>                
+                                {el.page}
+                            </TabPage>
+                        )
+                    }
+                </ul>
+                <Footer />
+            </article>);
     }
 }
