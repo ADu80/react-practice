@@ -5,6 +5,7 @@ import { HashRouter } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 import App from './components/App';
+import store from './stores';
 
 
 const RouteSet = () =>
@@ -12,7 +13,12 @@ const RouteSet = () =>
 	<Route path="/" component={App} />
 </HashRouter>
 
-ReactDOM.render(
-    <RouteSet />,
-    document.getElementById('app')
-);
+const render = () => {
+    ReactDOM.render(
+        <RouteSet />,
+        document.getElementById('app')
+    );
+}
+
+render();
+store.subscribe(render);
