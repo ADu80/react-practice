@@ -1,8 +1,10 @@
 .sidebar {
+    float: left;
     width: 200px;
+    height: 100%;
     background: #2f4050;
 }
 
-h2{
-	color: #eee;
+h2 {
+    color: #eee;
 }

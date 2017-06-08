@@ -5,7 +5,7 @@ var webpack = require('webpack'),
 module.exports = {
     entry: path.join(__dirname, 'src/index.js'),
     output: {
-        path: path.join(__dirname, 'build'),
+        path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
     },
     module: {
@@ -33,7 +33,7 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase: path.join(__dirname, 'build'),
+        contentBase: path.join(__dirname, 'dist'),
         inline: true,
         port: 8080
     }

@@ -14,16 +14,18 @@ export default class Page extends Component {
         return (
             <article className="page">
                 <TopBar />
-                <ul className="tab">
-                    <li className="tab-page default"><label className="tab-title"></label></li>
-                    {
-                        pages.map(el=>
-                            <TabPage key={el.id} title={el.title} path={el.path}>                
-                                {el.page}
-                            </TabPage>
-                        )
-                    }
-                </ul>
+                <article className="main">
+                    <ul className="tab clearfix">
+                        <li className="tab-page default"><label className="tab-title"></label></li>
+                        {
+                            pages.map(el=>
+                                <TabPage key={el.id} title={el.title} path={el.path}>                
+                                    {el.page}
+                                </TabPage>
+                            )
+                        }
+                    </ul>
+                </article>
                 <Footer />
             </article>);
     }

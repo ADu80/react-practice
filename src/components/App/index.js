@@ -11,7 +11,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <article className="container-full">
+            <article className="container-full clearfix">
             <SideBar />
             <Page />
         </article>

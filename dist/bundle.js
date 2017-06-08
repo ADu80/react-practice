@@ -15717,7 +15717,6 @@ var TabPage = function (_Component) {
             var _this2 = this;
 
             var titleCheckId = 'tab-title-check-' + this.props.title;
-
             return _react2.default.createElement(
                 'li',
                 { className: 'tab-page' },
@@ -22102,6 +22101,11 @@ var Page = function (_Component) {
                 _react2.default.createElement(
                     'ul',
                     { className: 'tab' },
+                    _react2.default.createElement(
+                        'li',
+                        { className: 'tab-page default' },
+                        _react2.default.createElement('label', { className: 'tab-title' })
+                    ),
                     _pages2.default.map(function (el) {
                         return _react2.default.createElement(
                             _TabPage2.default,
@@ -22271,7 +22275,7 @@ exports.default = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-		value: true
+	value: true
 });
 
 var _react = __webpack_require__(4);
@@ -22285,15 +22289,15 @@ var _TabPage2 = _interopRequireDefault(_TabPage);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function () {
-		return _react2.default.createElement(
-				'article',
-				{ className: 'tab-content' },
-				_react2.default.createElement(
-						'p',
-						null,
-						'this is page2'
-				)
-		);
+	return _react2.default.createElement(
+		'article',
+		{ className: 'tab-content' },
+		_react2.default.createElement(
+			'p',
+			null,
+			'this is page2'
+		)
+	);
 };
 
 /***/ }),
@@ -24821,7 +24825,7 @@ exports = module.exports = __webpack_require__(17)(undefined);
 
 
 // module
-exports.push([module.i, ".tab-page {\r\n    height: 40px;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-direction: normal;\r\n        -ms-flex-direction: row;\r\n            flex-direction: row;\r\n    -webkit-box-pack: start;\r\n        -ms-flex-pack: start;\r\n            justify-content: flex-start;\r\n    -webkit-box-align: stretch;\r\n        -ms-flex-align: stretch;\r\n            align-items: stretch;\r\n    line-height: 40px;\r\n}\r\n\r\n.tab-page > * {\r\n    vertical-align: middle;\r\n}\r\n\r\n.tab-title-check {\r\n    position: absolute;\r\n    left: -9999px;\r\n}\r\n\r\n.tab-title {\r\n    margin: 0;\r\n    padding: 0 10px;\r\n    border-right: solid 1px #e9e9e9;\r\n    color: #888;\r\n}\r\n\r\n.tab-title:hover {\r\n\tbackground: #eee;\r\n}\r\n\r\n.tab-title-check:checked ~ .tab-title {\r\n    background: #405060;\r\n    color: #fff;\r\n}\r\n\r\n.tab-content {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 40px;\r\n    right: 0;\r\n    bottom: 0;\r\n    border-top: solid 2px #405060;\r\n    display: none;\r\n}\r\n\r\n.tab-title-check:checked ~ .tab-content {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n", ""]);
+exports.push([module.i, ".tab-page {\r\n    height: 40px;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-direction: normal;\r\n        -ms-flex-direction: row;\r\n            flex-direction: row;\r\n    -webkit-box-pack: start;\r\n        -ms-flex-pack: start;\r\n            justify-content: flex-start;\r\n    -webkit-box-align: stretch;\r\n        -ms-flex-align: stretch;\r\n            align-items: stretch;\r\n    line-height: 40px;\r\n}\r\n\r\n.tab-page.default .tab-title {\r\n    padding: 0 20px;\r\n}\r\n\r\n.tab-page > * {\r\n    vertical-align: middle;\r\n}\r\n\r\n.tab-title-check {\r\n    position: absolute;\r\n    left: -9999px;\r\n}\r\n\r\n.tab-title {\r\n    margin: 0;\r\n    padding: 0 10px;\r\n    border-right: solid 1px #e9e9e9;\r\n    color: #888;\r\n}\r\n\r\n.tab-title:hover {\r\n    background: #eee;\r\n}\r\n\r\n.tab-title-check:checked ~ .tab-title {\r\n    background: #405060;\r\n    color: #fff;\r\n}\r\n\r\n.tab-content {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 40px;\r\n    right: 0;\r\n    bottom: 0;\r\n    border-top: solid 2px #405060;\r\n    display: none;\r\n}\r\n\r\n.tab-title-check:checked ~ .tab-content {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n", ""]);
 
 // exports
 
