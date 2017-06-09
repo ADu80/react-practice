@@ -18173,15 +18173,28 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(275);
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var books = [{ id: 'b0001', name: 'C++ MFC', price: 50 }, { id: 'b0002', name: 'ASP.NET MVC', price: 50 }, { id: 'b0003', name: 'Javascript High Design', price: 50 }, { id: 'b0004', name: 'Nodejs', price: 50 }, { id: 'b0005', name: 'MongoDB', price: 50 }, { id: 'b0006', name: 'React & Redux', price: 50 }, { id: 'b0007', name: 'Responsive Web Design', price: 50 }, { id: 'b0008', name: 'How to write js', price: 50 }, { id: 'b0009', name: 'Functional js', price: 50 }, { id: 'b0010', name: 'C# deepin', price: 50 }];
+
 var reducer = function reducer() {
-    var book = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var action = arguments[1];
 
+    console.log(reducer);
     switch (action.type) {
         case 'BOOKS_ADD':
-            return Object.assign({}, book, { id: book.id + 1 });
+            return [].concat(_toConsumableArray(state), [{}]);
+        case 'BOOKS_UPDATE':
+            return;
+            var books = state.slice(),
+                book = books.find(function (el) {
+                return el.id === action.book.id;
+            });
+            book.price += 100;
+            return books;
         default:
-            return book;
+            return state;
     }
 };
 
@@ -22720,7 +22733,7 @@ _stores2.default.subscribe(render);
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _react = __webpack_require__(4);
@@ -22741,45 +22754,45 @@ var _stores2 = _interopRequireDefault(_stores);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var books = [{ id: 'b0001', name: 'C++ MFC', price: 50 }, { id: 'b0002', name: 'ASP.NET MVC', price: 50 }, { id: 'b0003', name: 'Javascript High Design', price: 50 }, { id: 'b0004', name: 'Nodejs', price: 50 }, { id: 'b0005', name: 'MongoDB', price: 50 }, { id: 'b0006', name: 'React & Redux', price: 50 }, { id: 'b0007', name: 'Responsive Web Design', price: 50 }, { id: 'b0008', name: 'How to write js', price: 50 }, { id: 'b0009', name: 'Functional js', price: 50 }, { id: 'b0010', name: 'C# deepin', price: 50 }];
+var books = _stores2.default.getState();
 
 exports.default = function () {
-  return _react2.default.createElement(
-    'article',
-    { className: 'tab-content' },
-    _react2.default.createElement(
-      'div',
-      { className: 'btn-group' },
-      _react2.default.createElement(
-        'button',
-        { className: 'btn btn-primary',
-          onClick: function onClick() {
-            return _stores2.default.dispatch({ type: 'BOOKS_ADD' });
-          } },
-        'Add'
-      )
-    ),
-    _react2.default.createElement(
-      'ul',
-      { className: 'books' },
-      books.map(function (el) {
-        return _react2.default.createElement(
-          'li',
-          { key: el.id, className: 'item clearfix' },
-          _react2.default.createElement(
-            'a',
-            { className: 'name', href: '#' },
-            el.name
-          ),
-          _react2.default.createElement(
-            'span',
-            { className: 'price' },
-            el.price
-          )
-        );
-      })
-    )
-  );
+	return _react2.default.createElement(
+		'article',
+		{ className: 'tab-content' },
+		_react2.default.createElement(
+			'ul',
+			{ className: 'books' },
+			books.map(function (el) {
+				return _react2.default.createElement(
+					'li',
+					{ key: el.id, className: 'item clearfix' },
+					_react2.default.createElement(
+						'a',
+						{ className: 'name', href: '#' },
+						el.name
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'price' },
+						el.price
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'btn-group' },
+						_react2.default.createElement(
+							'button',
+							{ className: 'btn btn-primary',
+								onClick: function onClick() {
+									return _stores2.default.dispatch({ type: 'BOOKS_UPDATE' });
+								} },
+							'Change Price'
+						)
+					)
+				);
+			})
+		)
+	);
 };
 
 /***/ }),

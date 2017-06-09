@@ -2,15 +2,20 @@
     background: #eec;
 }
 
-.item {
+.books .item {
     padding: 5px 10px;
     border: solid 1px #fff;
 }
 
 .name {
     float: left;
+    margin-right: 100px;
 }
 
 .price {
+    float: left;
+}
+
+.btn-group {
     float: right;
 }
