@@ -27,6 +27,7 @@ export default class Page extends Component {
                     </ul>
                 </article>
                 <Footer />
-            </article>);
+            </article>
+        )
     }
 }

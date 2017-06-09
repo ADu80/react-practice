@@ -46,6 +46,7 @@
     bottom: 0;
     border-top: solid 2px #405060;
     display: none;
+    line-height: 1;
 }
 
 .tab-title-check:checked ~ .tab-content {

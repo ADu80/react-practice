@@ -19,3 +19,12 @@
 .btn-group {
     float: right;
 }
+
+.btn-toolbar {
+    margin: 10px;
+    margin-left: 50px;
+}
+
+.form-horizontal {
+    padding: 10px 30px;
+}

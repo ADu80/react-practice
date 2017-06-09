@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createFragment } from 'react';
 import styles from './index.css';
 
 import { Route } from 'react-router';
@@ -16,15 +16,16 @@ export default class TabPage extends Component {
 
     render() {
         var titleCheckId = 'tab-title-check-' + this.props.title;
-        return ( 
-            <Route path = { this.props.path }
-                render = {() =>
+        return ( < Route path = { this.props.path }
+            render = {
+                () =>
                 <li className="tab-page">
                         <input className="tab-title-check" id={titleCheckId} type="radio" name="page" onChange={this.onTabChange} checked />
                         <label className="tab-title" htmlFor={titleCheckId}>{this.props.title}</label>
-                        {this.props.children()}
+                        {this.props.children.render()}
                 </li>
-            } />
+            }
+            />
         )
     }
 }
