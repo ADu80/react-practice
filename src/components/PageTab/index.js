@@ -16,6 +16,7 @@ export default class PageTab extends Component {
     }
 
     handleChange(event, index, value) {
+        console.log(value);
         this.setState({ value })
     }
 
@@ -23,19 +24,20 @@ export default class PageTab extends Component {
         return (
             <div style={styles.pagetab}>
 	            <Toolbar style={styles.toolbar}>
-	    			<ToolbarGroup><IconButton style={styles.iconButton}><AvFastRewind /></IconButton></ToolbarGroup>
+	    			<ToolbarGroup><IconButton style={styles.iconButtonLeft}><AvFastRewind /></IconButton></ToolbarGroup>
 	    			<ToolbarGroup>
 	    				<NavLink to='/page101'>page101</NavLink>
 	    				<NavLink to='/page201'>page201</NavLink>
 	    				<NavLink to='/page301'>page301</NavLink>
 	    			</ToolbarGroup>
 	    			<ToolbarGroup>
-	    				<IconButton style={styles.iconButton}>><AvFastForward /></IconButton>
+	    				<IconButton style={styles.iconButtonRight}>><AvFastForward /></IconButton>
 	    				<DropDownMenu
-				          value={1}
 				          onChange={this.handleChange}
 				          style={styles.dropDownMenu}
 				          autoWidth={false}
+				          anchorOrigin={{ vertical: 'bottom',horizontal:'left'}}
+                          value={1}
 				        >
 				          <MenuItem value={1} primaryText="Custom width" />
 				          <MenuItem value={2} primaryText="Every Night" />
@@ -59,7 +61,7 @@ var styles = {
         height: '100%'
     },
     toolbar: {
-        height: 56,
+        height: 40,
         position: 'absolute',
         left: 0,
         top: 0,
@@ -71,15 +73,19 @@ var styles = {
     tabpage: {
         position: 'absolute',
         left: 0,
-        top: 56,
+        top: 40,
         right: 0,
         bottom: 0
     },
     dropDownMenu: {
         width: 200,
-        marginRight: 0
+        marginRight: 0,
+        borderLeft: 'solid 1px #eee'
     },
-    iconButton: {
+    iconButtonLeft: {
         borderRight: 'solid 1px #eee'
+    },
+    iconButtonRight: {
+        borderLeft: 'solid 1px #eee'
     }
 }

@@ -12,24 +12,18 @@ export default class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = { menus };
-        this.subMenuItemClick = this.subMenuItemClick.bind(this);
+        this.selectSubMenuItem = this.selectSubMenuItem.bind(this);
     }
 
-    subMenuItemClick(e) {
-        var id = e.target.getAttribute('data-id');
+    selectSubMenuItem(item) {
+        var id = item.id;
         this.setState((prevState, props) => {
             var preMenuitem = prevState.menus.find(el => el.checked),
                 currMenuitem = prevState.menus.find(el => el.id == id);
 
-            if (!preMenuitem) {
-                currMenuitem.checked = true;
-            } else if (preMenuitem.id === currMenuitem.id) {
-                currMenuitem.checked = !preMenuitem.checked;
-                preMenuitem.checked = false;
-            } else {
-                preMenuitem.checked = false;
-                currMenuitem.checked = true;
-            }
+            currMenuitem.checked = preMenuitem && preMenuitem.id === currMenuitem.id ? !preMenuitem.checked : true;
+            if (preMenuitem) preMenuitem.checked = false;
+            // }
 
             return prevState;
         });
@@ -40,12 +34,12 @@ export default class Menu extends Component {
             <ul style={styles.menu}>
         {this.state.menus.map(el=>
             <li key={el.id} style={el.checked?styles.checked:styles.nochecked}>
-                <NavLink style={styles.title} to={el.path} className="clearfix" data-id={el.id} onClick={this.subMenuItemClick}>
+                <a style={styles.title} className="clearfix" data-id={el.id} onClick={(e)=>{this.selectSubMenuItem(el)}}>
                    <ActionHome style={styles.leftIcon} />
                     <span style={styles.titleText}>{el.title}</span>
                     {el.checked?<NavigationExpandMore style={styles.rightIcon} />:
                     <NavigationChevronRight style={styles.rightIcon} />}
-                </NavLink>
+                </a>
                 <ul style={el.checked?styles.submenuVisible:styles.submenuNoVisible}>
                 {el.subs.map(el2=>
                     <li key={el2.id}>
@@ -88,7 +82,8 @@ var styles = {
         verticalAlign: 'middle',
         paddingTop: 10,
         paddingBottom: 10,
-        textDecoration: 'none'
+        textDecoration: 'none',
+        cursor: 'pointer'
     },
     titleText: {
         overflow: 'hidden'
