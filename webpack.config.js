@@ -1,6 +1,7 @@
 var webpack = require('webpack'),
     path = require('path'),
-    HtmlWebpackPlugin = require('html-webpack-plugin');
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 module.exports = {
     entry: path.join(__dirname, 'src/index.js'),
@@ -27,10 +28,9 @@ module.exports = {
             template: 'html-withimg-loader!' + path.join(__dirname, 'src/index.html'),
             filename: 'index.html'
         }),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery'
-        })
+        new TransferWebpackPlugin([
+            { from: 'services/static/css', to: '/css' }
+        ], path.join(__dirname,'src'))
     ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
