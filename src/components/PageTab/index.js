@@ -12,45 +12,24 @@ import Scenes from '../../scenes/';
 export default class PageTab extends Component {
     constructor(props) {
         super(props)
-        this.handleChange = this.handleChange.bind(this);
+        this.state = { value: 1 }
+        this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange(event, index, value) {
-        console.log(value);
         this.setState({ value })
     }
 
     render() {
         return (
             <div style={styles.pagetab}>
-	            <Toolbar style={styles.toolbar}>
-	    			<ToolbarGroup><IconButton style={styles.iconButtonLeft}><AvFastRewind /></IconButton></ToolbarGroup>
-	    			<ToolbarGroup>
-	    				<NavLink to='/page101'>page101</NavLink>
-	    				<NavLink to='/page201'>page201</NavLink>
-	    				<NavLink to='/page301'>page301</NavLink>
-	    			</ToolbarGroup>
-	    			<ToolbarGroup>
-	    				<IconButton style={styles.iconButtonRight}>><AvFastForward /></IconButton>
-	    				<DropDownMenu
-				          onChange={this.handleChange}
-				          style={styles.dropDownMenu}
-				          autoWidth={false}
-				          anchorOrigin={{ vertical: 'bottom',horizontal:'left'}}
-                          value={1}
-				        >
-				          <MenuItem value={1} primaryText="Custom width" />
-				          <MenuItem value={2} primaryText="Every Night" />
-				          <MenuItem value={3} primaryText="Weeknights" />
-				          <MenuItem value={4} primaryText="Weekends" />
-				          <MenuItem value={5} primaryText="Weekly" />
-				        </DropDownMenu>
-	    			</ToolbarGroup>
-	    		</Toolbar>
-	    		<article style={styles.tabpage}>
-	    			<Scenes />
-	    		</article>
-    		</div>
+                <Toolbar style={styles.toolbar} className="clearfix">
+                    
+                </Toolbar>
+                <article style={styles.tabpage}>
+                    <Scenes />
+                </article>
+            </div>
         )
     }
 }

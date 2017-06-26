@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Animate } from 'react-move';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 import NavLink from 'react-router-dom/NavLink';
 import ActionHome from 'material-ui/svg-icons/action/home';
@@ -23,7 +24,6 @@ export default class Menu extends Component {
 
             currMenuitem.checked = preMenuitem && preMenuitem.id === currMenuitem.id ? !preMenuitem.checked : true;
             if (preMenuitem) preMenuitem.checked = false;
-            // }
 
             return prevState;
         });
@@ -40,13 +40,19 @@ export default class Menu extends Component {
                     {el.checked?<NavigationExpandMore style={styles.rightIcon} />:
                     <NavigationChevronRight style={styles.rightIcon} />}
                 </a>
-                <ul style={el.checked?styles.submenuVisible:styles.submenuNoVisible}>
-                {el.subs.map(el2=>
-                    <li key={el2.id}>
-                        <NavLink style={styles.subTitle} to={el2.path}>{el2.title}</NavLink>
-                    </li>)
-                }
-                </ul>
+                <Animate default={{height:0}}
+                    data={{checked:el.checked,height:el.checked?el.subs.length*34+15:0}}
+                >
+                {(data)=>(
+                    <ul style={styles.submenuVisible}>
+                    {el.subs.map(el2=>
+                        <li key={el2.id}>
+                            <NavLink style={styles.subTitle} to={el2.path}>{el2.title}</NavLink>
+                        </li>)
+                    }
+                    </ul>
+                )}
+                </Animate>
             </li>
         )}
         </ul>)
@@ -61,8 +67,8 @@ var styles = {
     submenuVisible: {
         display: 'block',
         listStyle: 'none',
-        paddingBottom: 8,
-        borderLeft: 'solid 10px #193'
+        paddingBottom: 15,
+        borderLeft: 'solid 5px #193'
     },
     submenuNoVisible: {
         display: 'none',
