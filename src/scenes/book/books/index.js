@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import stores from '../../../stores';
 import RaisedButton from 'material-ui/RaisedButton';
 import books from './books';
+import * as actions from './actions';
 
 
 export default class Books extends Component {
@@ -13,19 +14,19 @@ export default class Books extends Component {
 
     refreshData(e) {
         console.log(books);
-        stores.dispatch({ type: 'BOOKS_DOWNLOAD', books })
+        stores.dispatch({ type: actions.BOOKS_DOWNLOAD, books })
     }
 
     changePrice(e, book) {
-        stores.dispatch({ type: 'BOOKS_UPDATE', book })
+        stores.dispatch({ type: actions.BOOKS_UPDATE, book })
     }
 
     deleteBook(e, book) {
-        stores.dispatch({ type: 'BOOKS_DELETE', id: book.id })
+        stores.dispatch({ type: actions.BOOKS_DELETE, id: book.id })
     }
 
     componentDidMount() {
-        stores.dispatch({ type: 'BOOKS_DOWNLOAD', books })
+        stores.dispatch({ type: actions.BOOKS_DOWNLOAD, books })
     }
 
     render() {

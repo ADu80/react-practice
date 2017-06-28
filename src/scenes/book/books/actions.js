@@ -1,0 +1,6 @@
+export var BOOKS_ADD = 'BOOKS_ADD';
+export var BOOKS_UPDATE = 'BOOKS_UPDATE';
+export var BOOKS_DELETE = 'BOOKS_DELETE';
+export var BOOKS_DOWNLOAD = 'BOOKS_DOWNLOAD';
+
+

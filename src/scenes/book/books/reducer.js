@@ -1,19 +1,22 @@
+import * as actions from './actions';
+
+
 export default (state = {}, action) => {
     switch (action.type) {
-        case 'BOOKS_ADD':
+        case actions.BOOKS_ADD:
             state.push(action.book);
             return state;
 
-        case 'BOOKS_UPDATE':
+        case actions.BOOKS_UPDATE:
             action.book.price += 100;
             return state;
 
-        case 'BOOKS_DELETE':
+        case actions.BOOKS_DELETE:
             state.splice(state.findIndex(el => el.id === action.id), 1);
             return state;
             // return state.filter(el => el.id !== action.id);
 
-        case 'BOOKS_DOWNLOAD':
+        case actions.BOOKS_DOWNLOAD:
             return action.books;
 
         default:

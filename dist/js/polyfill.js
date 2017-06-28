@@ -247,10 +247,10 @@ if (!Object.keys) {
     }
 
 
-    if (!global.console) {
-        global.console = {};
+    if (!window.console) {
+        window.console = {};
     }
-    var con = global.console;
+    var con = window.console;
     var prop,
         method;
     var dummy = function() {};
