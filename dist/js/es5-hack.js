@@ -128,6 +128,7 @@ if (!Function.prototype.bind) {
 
 ! function() {
     var hasOwn = Object.prototype.hasOwnProperty;
+
     Object.keys = Object.keys || function(obj) {
         var result = [];
         for (var key in obj)
@@ -136,4 +137,47 @@ if (!Function.prototype.bind) {
             }
         return result;
     };
+
+
+    if (!JSON) {
+        window.JSON = {
+            parse: function(str) {
+                return eval('(' + str + ')');
+            },
+            stringify: function(obj) {
+                var otype = typeof obj;
+                if (otype !== 'object') {
+                    return obj;
+                }
+
+                var str = '',
+                    boolOrNum = function(o) {
+                        var type = typeof o;
+                        if (type === 'number' || type === 'boolean') {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                for (var i in obj) {
+                    if (hasOwn.call(obj, i)) {
+                        var value = obj[i],
+                            valueStr = value.toString();
+                        str += '"' + i + '":' + boolOrNum(value) ? valueStr : '"' + valueStr + '"';
+                    }
+                }
+                return '{' + str + '}';
+            },
+            toString: function() {
+                return "[Object JSON]";
+            },
+            toLocalString: function() {
+                return "[Object JSON]";
+            },
+            valueOf: function() {
+                return {};
+            }
+        };
+    }
+
 }();

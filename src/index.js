@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Route } from 'react-router';
-import { HushRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import stores from './stores';
 import App from './components/AppLayout';
 
 const RouteSet = () =>
-<HushRouter>
+<BrowserRouter>
 	<Route path="/" component={App}>
 	</Route>
-</HushRouter>
+</BrowserRouter>
 
 const render = () => {
     ReactDOM.render(
@@ -20,3 +21,4 @@ const render = () => {
 
 injectTapEventPlugin()
 render()
+stores.subscribe(render);

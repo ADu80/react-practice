@@ -10,6 +10,14 @@ var menus = [{
         id: 102,
         title: 'page102',
         path: '/page102'
+    }, {
+        id: 103,
+        title: 'page103',
+        path: '/page103'
+    }, {
+        id: 104,
+        title: 'page104',
+        path: '/page104'
     }],
     checked: true
 }, {
@@ -24,6 +32,18 @@ var menus = [{
         id: 202,
         title: 'page202',
         path: '/page202'
+    }, {
+        id: 203,
+        title: 'page203',
+        path: '/page203'
+    }, {
+        id: 204,
+        title: 'page204',
+        path: '/page204'
+    }, {
+        id: 205,
+        title: 'page205',
+        path: '/page205'
     }],
     checked: false
 }, {

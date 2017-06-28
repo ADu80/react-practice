@@ -1,6 +1,7 @@
 var webpack = require('webpack'),
     path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
     TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 module.exports = {
@@ -16,7 +17,16 @@ module.exports = {
             use: 'babel-loader'
         }, {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader', 'postcss-loader']
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: ['css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]', 'postcss-loader']
+            })
+        }, {
+            test: /\.(jpg|png)/,
+            use: 'url-loader?name=/images/[nmae].[ext]&limit=8196'
+        }, {
+            test: /\.(woff2?|ttf|eot|svg)/,
+            use: 'url-loader?name=/iconfont/[name].[ext]&limit=8196'
         }]
     },
     plugins: [
@@ -27,6 +37,7 @@ module.exports = {
             template: 'html-withimg-loader!' + path.join(__dirname, 'src/index.html'),
             filename: 'index.html'
         }),
+        new ExtractTextPlugin('css/styles.css'),
         new TransferWebpackPlugin([
             { from: 'services/static/css', to: '/css' },
             { from: 'services/static/js', to: '/js' }

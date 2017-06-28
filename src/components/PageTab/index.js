@@ -3,30 +3,41 @@ import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-
 import IconButton from 'material-ui/IconButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-import AvFastForward from 'material-ui/svg-icons/av/fast-forward';
-import AvFastRewind from 'material-ui/svg-icons/av/fast-rewind';
 import NavLink from 'react-router-dom/NavLink';
 import Scenes from '../../scenes/';
-
+import styles from './index.css';
 
 export default class PageTab extends Component {
     constructor(props) {
         super(props)
-        this.state = { value: 1 }
-        this.handleChange = this.handleChange.bind(this)
-    }
-
-    handleChange(event, index, value) {
-        this.setState({ value })
     }
 
     render() {
         return (
-            <div style={styles.pagetab}>
-                <Toolbar style={styles.toolbar} className="clearfix">
-                    
-                </Toolbar>
-                <article style={styles.tabpage}>
+            <div className={styles.pagetab}>
+                <ul className={styles.toolbar+' clearfix'}>
+                    <li className={styles.pagtab__Left}>
+                        <a className={styles.link}>
+                            <i className="fa fa-backward"></i>
+                        </a>
+                    </li>
+                    <li className={styles.pagetab__right}>
+                        <a className={styles.link}>
+                            <i className="fa fa-forward"></i>
+                        </a>
+                    </li>
+                    <li className={styles.pagetab__mid}>
+                        <ul className="clearfix">
+                            <li className={styles.pagetab__title}>
+                                <NavLink className={styles.navlink} to="page101">
+                                    <span style={inlineStyles.middle}>page101</span>
+                                    <i className="fa fa-times-circle" style={inlineStyles.middle}></i>
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <article className={styles.pagetab__page}>
                     <Scenes />
                 </article>
             </div>
@@ -34,27 +45,12 @@ export default class PageTab extends Component {
     }
 }
 
-var styles = {
-    pagetab: {
-        position: 'relative',
-        height: '100%'
-    },
-    toolbar: {
-        height: 40,
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        right: 0,
-        padding: 0,
-        background: 'transparent',
-        borderBottom: 'solid 2px #234658'
-    },
-    tabpage: {
-        position: 'absolute',
-        left: 0,
-        top: 40,
-        right: 0,
-        bottom: 0
+var tabColor = '#aaa';
+
+var inlineStyles = {
+    avIcon: {
+        verticalAlign: 'middle',
+        color: tabColor
     },
     dropDownMenu: {
         width: 200,
@@ -66,5 +62,9 @@ var styles = {
     },
     iconButtonRight: {
         borderLeft: 'solid 1px #eee'
+    },
+    middle: {
+        verticalAlign: 'middle',
+        marginLeft: 5
     }
 }

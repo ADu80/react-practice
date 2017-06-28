@@ -1,0 +1,58 @@
+.menu {
+    margin-top: 10px;
+}
+
+.submenu {
+    display: block;
+    overflow: hidden
+}
+
+.menu__item--hecked {
+    background: #203240
+}
+
+.menu__title {
+    display: block;
+    color: #abe;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    height: 20px;
+    line-height: 20px
+}
+
+.menu__title__text {
+    display: inline-block;
+    overflow: hidden
+}
+
+.menu__title__lefticon {
+    color: #abe!important;
+    float: left;
+    margin-left: 10px;
+    margin-right: 8px;
+    margin-top: 2px;
+    height: 15px!important;
+    vertical-align: middle
+}
+
+.menu__title__righticon {
+    color: #abe!important;
+    float: right;
+    margin-right: 15px;
+    margin-top: 3px;
+    height: 20px!important
+}
+
+.submenu__title {
+    display: block;
+    color: #abe;
+    vertical-align: middle;
+    padding-left: 50px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-decoration: none;
+    font-size: 14px
+}

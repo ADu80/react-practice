@@ -13,7 +13,7 @@ export default () =>
         </header>
         <aside style={styles.sidebar}>
             <header style={styles.sidebar__top}>
-                <Avatar src={'./boy.png'} />
+                <Avatar src={require('./boy.png')} />
             </header>
             <nav style={styles.sidebar__nav}>
                 <Menu />
@@ -34,7 +34,8 @@ var styles = {
         left: '200px',
         right: 0,
         top: 0,
-        background: '#f2f4f6'
+        background: '#f2f4f6',
+        borderBottom:'solid 1px #ddd'
     },
     sidebar: {
         position: 'fixed',
@@ -62,6 +63,7 @@ var styles = {
         left: '200px',
         bottom: 0,
         right: 0,
-        background: '#f2f4f6'
+        background: '#f2f4f6',
+        borderTop:'solid 1px #ddd'
     }
 }

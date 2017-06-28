@@ -1,0 +1,70 @@
+.pagetab {
+    position: relative;
+    height: 100%
+}
+
+.toolbar {
+    position: absolute;
+    height: 40px;
+    line-height: 38px;
+    left: 0;
+    top: 0;
+    right: 0;
+    padding: 0;
+    background: transparent;
+    border-bottom: solid 2px #234658
+}
+
+.pagetab__title {
+    float: left;
+    padding: 0 10px!important;
+    color: #666!important;
+    border-right: solid 1px #eee;
+}
+
+.pagetab__title--checked {
+    composes: pagetab__title;
+    background: #263040;
+}
+
+.pagetab__title--checked > * {
+    color: #fff;
+}
+
+.pagetab__page {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    right: 0;
+    bottom: 0
+}
+
+.link {
+    display: block;
+    height: 100%;
+    padding: 0 15px!important;
+    color: #666;
+    cursor: pointer;
+}
+
+.pagtab__Left {
+    float: left;
+    border-right: solid 1px #e2e2e2;
+}
+
+.pagetab__mid {
+    overflow: hidden;
+    border-right: solid 1px #e2e2e2;
+}
+
+.pagetab__right {
+    float: right;
+    border-right: solid 1px #e2e2e2;
+}
+
+.navlink {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: #666;
+}
