@@ -1,49 +1,43 @@
-import React, { Component } from 'react';
-import stores from '../../../stores';
-import RaisedButton from 'material-ui/RaisedButton';
-import books from './books';
-import * as actions from './actions';
+import React, { Component } from 'react'
+import RaisedButton from 'material-ui/RaisedButton'
+import books from './books'
+import styles from './index.css'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import actions from './actions'
 
 
-export default class Books extends Component {
+class Books extends Component {
     constructor(props) {
-        super(props);
-        this.changePrice = this.changePrice.bind(this)
-        this.refreshData = this.refreshData.bind(this);
+        super(props)
+        this.refreshData = this.refreshData.bind(this)
     }
 
     refreshData(e) {
-        console.log(books);
-        stores.dispatch({ type: actions.BOOKS_DOWNLOAD, books })
-    }
-
-    changePrice(e, book) {
-        stores.dispatch({ type: actions.BOOKS_UPDATE, book })
-    }
-
-    deleteBook(e, book) {
-        stores.dispatch({ type: actions.BOOKS_DELETE, id: book.id })
+        console.log(this.props.DownloadBooks);
+        this.props.DownloadBooks(books)
     }
 
     componentDidMount() {
-        stores.dispatch({ type: actions.BOOKS_DOWNLOAD, books })
+        this.refreshData()
     }
 
     render() {
+        const { books, UpdateBook, DeleteBook } = this.props
         return (
             <article>
-                <section style={styles.toolbar}>
+                <section className={styles.toolbar}>
                     <RaisedButton primary={true}>新增</RaisedButton>
                     <RaisedButton onClick={this.refreshData}>刷新</RaisedButton>
                 </section>
                 <section>
-                    <ul style={styles.grid}>
-                    {stores.getState().book.books.map(el=>
-                        <li style={styles.row} key={el.id}>
-                            <span style={styles.show}>{el.name}</span>
-                            <span style={styles.show}>{el.price}</span>
-                            <RaisedButton style={styles.btn} onClick={(e)=>{this.changePrice(e,el)}}>add price 100 once </RaisedButton>
-                            <RaisedButton style={styles.btn} onClick={(e)=>{this.deleteBook(e,el)}} secondary={true}>delete</RaisedButton>
+                    <ul className={styles.grid}>
+                    {books.map(el=>
+                        <li className={styles.row} key={el.id}>
+                            <span className={styles.show}>{el.name}</span>
+                            <span className={styles.show}>{el.price}</span>
+                            <RaisedButton className={styles.btn} onClick={(e)=>{UpdateBook(el)}}>add price 100 once </RaisedButton>
+                            <RaisedButton className={styles.btn} onClick={(e)=>{DeleteBook(e,el)}} secondary={true}>delete</RaisedButton>
                         </li>
                     )}
                     </ul>
@@ -53,22 +47,14 @@ export default class Books extends Component {
     }
 }
 
-var styles = {
-    toolbar: {
-        padding: '10px'
-    },
-    show: {
-        display: 'inline-block',
-        width: 300
-    },
-    btn: {
-        width: 150
-    },
-    grid: {
-        padding: '10px 0',
-        background: '#eee'
-    },
-    row: {
-        padding: '10px'
+var mapStateToProps = (state) => {
+    return {
+        books: state.book.books
     }
 }
+
+var mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(actions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Books)

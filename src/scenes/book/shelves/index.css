@@ -1,0 +1,21 @@
+.toolbar {
+    padding: 10px
+}
+
+.show {
+    display: inline-block;
+    width: 300px
+}
+
+.btn {
+    width: 150px
+}
+
+.grid {
+    padding: 10px 0;
+    background: #eee
+}
+
+.row {
+    padding: 10px;
+}

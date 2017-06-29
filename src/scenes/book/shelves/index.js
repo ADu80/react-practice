@@ -1,42 +1,41 @@
-import React, { Component } from 'react';
-import stores from '../../../stores';
-import RaisedButton from 'material-ui/RaisedButton';
-import shelves from './shelves';
+import React, { Component } from 'react'
+import RaisedButton from 'material-ui/RaisedButton'
+import shelves from './shelves'
+import styles from './index.css'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import actions from './actions'
 
 
-export default class Shelves extends Component {
+class Shelves extends Component {
     constructor(props) {
-        super(props);
-        this.changePrice = this.changePrice.bind(this)
-        this.refreshData = this.refreshData.bind(this);
+        super(props)
+        this.refreshData = this.refreshData.bind(this)
     }
 
     refreshData(e) {
-        stores.dispatch({ type: 'SHELVES_DOWNLOAD', shelves })
-    }
-
-    changePrice(e, shelf) {
-        stores.dispatch({ type: 'SHELVES_UPDATE', shelf })
+        this.props.DownloadShelves(shelves)
     }
 
     componentDidMount() {
-        stores.dispatch({ type: 'SHELVES_DOWNLOAD', shelves })
+        this.refreshData()
     }
 
     render() {
+        const { shelves, UpdateShelf } = this.props
         return (
             <article>
-                <section style={styles.toolbar}>
+                <section className={styles.toolbar}>
                     <RaisedButton primary={true}>新增</RaisedButton>
                     <RaisedButton onClick={this.refreshData}>刷新</RaisedButton>
                 </section>
                 <section>
-                    <ul style={styles.grid}>
-                    {stores.getState().book.shelves.map(el=>
-                        <li style={styles.row} key={el.id}>
-                            <span style={styles.show}>{el.brand}</span>
-                            <span style={styles.show}>{el.price}</span>
-                            <RaisedButton style={styles.show} onClick={(e)=>{this.changePrice(e,el)}}>add price 100 once </RaisedButton>
+                    <ul className={styles.grid}>
+                    {shelves.map(el=>
+                        <li className={styles.row} key={el.id}>
+                            <span className={styles.show}>{el.brand}</span>
+                            <span className={styles.show}>{el.price}</span>
+                            <RaisedButton className={styles.show} onClick={(e)=>{UpdateShelf(el)}}>add price 100 once </RaisedButton>
                         </li>
                     )}
                     </ul>
@@ -46,19 +45,15 @@ export default class Shelves extends Component {
     }
 }
 
-var styles = {
-    toolbar: {
-        padding: '10px'
-    },
-    show: {
-        display: 'inline-block',
-        width: 300
-    },
-    grid: {
-        padding: '10px 0',
-        background: '#eee'
-    },
-    row: {
-        padding: '10px'
+
+var mapStateToProps = (state) => {
+    return {
+        shelves: state.book.shelves
     }
 }
+
+var mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(actions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shelves)

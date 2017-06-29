@@ -14,9 +14,9 @@ export default (state = {}, action) => {
         case actions.BOOKS_DELETE:
             state.splice(state.findIndex(el => el.id === action.id), 1);
             return state;
-            // return state.filter(el => el.id !== action.id);
 
         case actions.BOOKS_DOWNLOAD:
+            console.log(state, action);
             return action.books;
 
         default:
