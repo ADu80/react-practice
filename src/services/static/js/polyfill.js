@@ -60,10 +60,26 @@ if (!Array.prototype.findIndex) {
 if (!Array.prototype.reduce) {
     Array.prototype.reduce = function(callback) {
         var _arr = this,
+            len = _arr.length,
             r = callback(_arr[0], _arr[1], 0, _arr);
-        for (var i = 1; i < _arr.length - 2; i++) {
+        for (var i = 1; i < len - 2; i++) {
             if (_arr.hasOwnProperty(i)) {
                 r = callback(r, _arr[i + 1], i, _arr);
+            }
+        }
+        return r;
+    }
+}
+
+
+if (!Array.prototype.reduceRight) {
+    Array.prototype.reduceRight = function(callback) {
+        var _arr = this,
+            len = _arr.length,
+            r = callback(_arr[len - 1], _arr[len - 2], 0, _arr);
+        for (var i = len - 2; i > 0; i--) {
+            if (_arr.hasOwnProperty(i)) {
+                r = callback(r, _arr[i - 1], len - i - 1, _arr);
             }
         }
         return r;
@@ -108,20 +124,15 @@ if (!Array.prototype.indexOf) {
 
 
 if (!Function.prototype.bind) {
-    Function.prototype.bind = function(oThis) {
-        if (typeof this !== "function") {
-            throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
-        }
-        var aArgs = Array.prototype.slice.call(arguments, 1),
-            fToBind = this,
-            fNOP = function() {},
-            fBound = function() {
-                return fToBind.apply(this instanceof fNOP && oThis ? this : oThis,
-                    aArgs.concat(Array.prototype.slice.call(arguments)));
-            };
-        fNOP.prototype = this.prototype;
-        fBound.prototype = new fNOP();
-        return fBound;
+    Function.prototype.bind = Function.prototype.bind || function() {
+        var fn = this,
+            presetArgs = []
+            .slice
+            .call(arguments);
+        var context = presetArgs.shift();
+        return function() {
+            return fn.apply(context, presetArgs.concat([].slice.call(arguments)));
+        };
     };
 }
 
@@ -201,17 +212,24 @@ if (!Object.keys) {
 }
 
 
-! function() {
+! function(window) {
 
     var hasOwn = Object.prototype.hasOwnProperty;
 
-    if (!JSON) {
+    if (!window.JSON) {
         window.JSON = {
             parse: function(str) {
-                return eval('(' + str + ')');
+                try {
+                    return eval('(' + str + ')');
+                } catch (err) {
+                    throw new TypeError('JSON.parse: unexpected character at line 1 column 1 of the JSON data');
+                }
             },
             stringify: function(obj) {
                 var otype = typeof obj;
+                if (otype === "string") {
+                    return '"' + obj + '"';
+                }
                 if (otype !== 'object') {
                     return obj;
                 }
@@ -281,4 +299,4 @@ if (!Object.keys) {
             return x !== x && y !== y;
         }
     });
-}();
+}(window);
