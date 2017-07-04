@@ -56,6 +56,48 @@
     text-decoration: none;
     font-size: 14px
 }
+.src-scenes-book-books-index---toolbar---1JbdO {
+    padding: 10px
+}
+
+.src-scenes-book-books-index---show---30tAM {
+    display: inline-block;
+    width: 300px
+}
+
+.src-scenes-book-books-index---btn---3LSLb {
+    width: 150px
+}
+
+.src-scenes-book-books-index---grid---ZgLJt {
+    padding: 10px 0;
+    background: #eee
+}
+
+.src-scenes-book-books-index---row---9hX1w {
+    padding: 10px;
+}
+.src-scenes-book-shelves-index---toolbar---3tyUO {
+    padding: 10px
+}
+
+.src-scenes-book-shelves-index---show---1UT6Y {
+    display: inline-block;
+    width: 300px
+}
+
+.src-scenes-book-shelves-index---btn---1J83z {
+    width: 150px
+}
+
+.src-scenes-book-shelves-index---grid---22D5v {
+    padding: 10px 0;
+    background: #eee
+}
+
+.src-scenes-book-shelves-index---row---1Ozuj {
+    padding: 10px;
+}
 .src-components-PageTab-index---pagetab---37AKI {
     position: relative;
     height: 100%
@@ -124,4 +166,46 @@
     height: 100%;
     text-decoration: none;
     color: #666;
+}
+.src-components-AppLayout-index---topbar---3P1dn {
+    height: 60px;
+    position: fixed;
+    left: 200px;
+    right: 0;
+    top: 0;
+    background: #f2f4f6;
+    border-bottom: solid 1px #ddd
+}
+
+.src-components-AppLayout-index---sidebar---13vKl {
+    position: fixed;
+    width: 200px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: #2f4050
+}
+
+.src-components-AppLayout-index---sidebar__top---3cyNW {
+    height: 100;
+    background: #203240
+}
+
+.src-components-AppLayout-index---main---1ciFo {
+    position: fixed;
+    left: 200px;
+    top: 60px;
+    bottom: 40px;
+    right: 0;
+    overflow: hidden
+}
+
+.src-components-AppLayout-index---footer---1kJdn {
+    position: fixed;
+    height: 40px;
+    left: 200px;
+    bottom: 0;
+    right: 0;
+    background: #f2f4f6;
+    border-top: solid 1px #ddd
 }

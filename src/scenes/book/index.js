@@ -1,8 +1,8 @@
-import booksReducer from './books/reducer';
-import BooksApp from './books';
-import shelvesReducer from './shelves/reducer';
-import ShelvesApp from './shelves';
-import { combineReducers } from 'redux';
+import booksReducer from './books/reducer'
+import BooksApp from './books'
+import shelvesReducer from './shelves/reducer'
+import ShelvesApp from './shelves'
+import { combineReducers } from 'redux'
 
 
 export var bookReducer = combineReducers({

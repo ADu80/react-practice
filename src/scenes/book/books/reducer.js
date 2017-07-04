@@ -1,25 +1,31 @@
-import * as actions from './actions';
+import * as actions from './actions'
 
 
-export default (state = {}, action) => {
+export default (booksState = [], action) => {
+    var newState = booksState;
     switch (action.type) {
         case actions.BOOKS_ADD:
-            state.push(action.book);
-            return state;
+            newState = booksState.concat(action.book)
+            return newState
 
         case actions.BOOKS_UPDATE:
-            action.book.price += 100;
-            return state;
+            newState = booksState.map(el => {
+                if (el.id === action.book.id) {
+                    el = action.book
+                    return el
+                }
+                return el
+            })
+            return newState
 
         case actions.BOOKS_DELETE:
-            state.splice(state.findIndex(el => el.id === action.id), 1);
-            return state;
+            newState = booksState.filter(el => el.id !== action.book.id)
+            return newState
 
-        case actions.BOOKS_DOWNLOAD:
-            console.log(state, action);
-            return action.books;
+        case actions.BOOKS_FETCH:
+            return action.books
 
         default:
-            return state;
+            return booksState
     }
 }

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Route from 'react-router-dom/Route';
+import React, { Component } from 'react'
+import Route from 'react-router-dom/Route'
 import { Animate } from 'react-move'
-import { Books, Shelves } from './book';
+import { Books, Shelves } from './book'
 
 
 const Page101 = () => <Books />

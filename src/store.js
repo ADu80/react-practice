@@ -1,5 +1,5 @@
-import { createStore, combineReducers } from 'redux';
-import { book, bookReducer } from './scenes/book';
+import { createStore, combineReducers } from 'redux'
+import { book, bookReducer } from './scenes/book'
 
 
 var state = { book }

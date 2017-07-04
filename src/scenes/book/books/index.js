@@ -4,31 +4,36 @@ import books from './books'
 import styles from './index.css'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import actions from './actions'
 
 
-class Books extends Component {
+class BooksPage extends Component {
     constructor(props) {
         super(props)
-        this.refreshData = this.refreshData.bind(this)
+        this.fetchBooks = this.fetchBooks.bind(this)
+        this.changePrice = this.changePrice.bind(this)
     }
 
-    refreshData(e) {
-        console.log(this.props.DownloadBooks);
-        this.props.DownloadBooks(books)
+    fetchBooks(e) {
+        this.props.fetchBooks(books)
+    }
+
+    changePrice(e, book) {
+        book.price += 100
+        this.props.updateBook(book)
     }
 
     componentDidMount() {
-        this.refreshData()
+        // this.fetchBooks(books)
     }
 
     render() {
-        const { books, UpdateBook, DeleteBook } = this.props
+        const { books, deleteBook } = this.props
+        // console.log(books)
         return (
             <article>
                 <section className={styles.toolbar}>
                     <RaisedButton primary={true}>新增</RaisedButton>
-                    <RaisedButton onClick={this.refreshData}>刷新</RaisedButton>
+                    <RaisedButton onClick={this.fetchBooks}>查询</RaisedButton>
                 </section>
                 <section>
                     <ul className={styles.grid}>
@@ -36,8 +41,10 @@ class Books extends Component {
                         <li className={styles.row} key={el.id}>
                             <span className={styles.show}>{el.name}</span>
                             <span className={styles.show}>{el.price}</span>
-                            <RaisedButton className={styles.btn} onClick={(e)=>{UpdateBook(el)}}>add price 100 once </RaisedButton>
-                            <RaisedButton className={styles.btn} onClick={(e)=>{DeleteBook(e,el)}} secondary={true}>delete</RaisedButton>
+                            <RaisedButton className={styles.btn} 
+                            onClick={(e)=>{this.changePrice(e,el)}}>add price 100 once </RaisedButton>
+                            <RaisedButton className={styles.btn} 
+                            onClick={(e)=>{deleteBook(el)}} secondary={true}>delete</RaisedButton>
                         </li>
                     )}
                     </ul>
@@ -57,4 +64,4 @@ var mapDispatchToProps = (dispatch) => {
     return bindActionCreators(actions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Books)
+export default connect(mapStateToProps, mapDispatchToProps)(BooksPage)
