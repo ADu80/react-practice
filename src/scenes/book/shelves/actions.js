@@ -32,4 +32,3 @@ export var DownloadShelves = (shelves) => {
     }
 }
 
-// export default { AddShelf, UpdateShelf, DeleteShelf, DownloadShelves }

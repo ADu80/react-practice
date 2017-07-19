@@ -10,5 +10,5 @@ export var bookReducer = combineReducers({
     shelves: shelvesReducer
 })
 export var book = { books: [], shelves: [] }
-export var Books = BooksApp;
-export var Shelves = ShelvesApp;
+export var Books = BooksApp
+export var Shelves = ShelvesApp

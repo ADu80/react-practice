@@ -3,9 +3,10 @@ import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-
 import IconButton from 'material-ui/IconButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-import NavLink from 'react-router-dom/NavLink';
+import { Link }  from 'react-router-dom';
 import Scenes from '../../scenes/';
 import styles from './index.css';
+
 
 export default class PageTab extends Component {
     constructor(props) {
@@ -29,10 +30,10 @@ export default class PageTab extends Component {
                     <li className={styles.pagetab__mid}>
                         <ul className="clearfix">
                             <li className={styles.pagetab__title}>
-                                <NavLink className={styles.navlink} to="page101">
+                                <Link  className={styles.navlink} to="page101">
                                     <span style={inlineStyles.middle}>page101</span>
                                     <i className="fa fa-times-circle" style={inlineStyles.middle}></i>
-                                </NavLink>
+                                </Link >
                             </li>
                         </ul>
                     </li>

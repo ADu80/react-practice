@@ -4,6 +4,7 @@ import books from './books'
 import styles from './index.css'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import * as actions from './actions'
 
 
 class BooksPage extends Component {
@@ -22,18 +23,46 @@ class BooksPage extends Component {
         this.props.updateBook(book)
     }
 
+    componentWillMount() {
+        console.log('componentWillMount')
+    }
+
     componentDidMount() {
-        // this.fetchBooks(books)
+        this.fetchBooks(books)
+        console.log('componentDidMount')
+    }
+
+    componentWillReceiveProps(e) {
+        console.log('componentWillReceiveProps', e)
+    }
+
+    shouldComponentUpdate(e) {
+        console.log('shouldComponentUpdate', e)
+        return true
+    }
+
+    componentWillUpdate(e) {
+        console.log('componentWillUpdate', e)
+    }
+
+    componentDidUpdate(e) {
+        console.log('componentDidUpdate', e)
+    }
+
+    componentWillUnmount(e) {
+        console.log('componentWillUnmount', e)
     }
 
     render() {
+        console.log('render')
         const { books, deleteBook } = this.props
-        // console.log(books)
+            // console.log(books)
         return (
             <article>
                 <section className={styles.toolbar}>
                     <RaisedButton primary={true}>新增</RaisedButton>
                     <RaisedButton onClick={this.fetchBooks}>查询</RaisedButton>
+                    <input type="text" />
                 </section>
                 <section>
                     <ul className={styles.grid}>

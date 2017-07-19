@@ -8,5 +8,5 @@ var appReducer = combineReducers({
     book: bookReducer
 })
 
-const store = createStore(appReducer, state);
-export default store;
+const store = createStore(appReducer, state)
+export default store

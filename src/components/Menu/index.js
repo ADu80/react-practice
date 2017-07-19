@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Animate } from 'react-move';
-import NavLink from 'react-router-dom/NavLink';
+import { Link }  from 'react-router-dom';
 import menus from './store';
 import styles from './index.css';
 
@@ -53,7 +53,7 @@ export default class Menu extends Component {
                         <ul className={styles.submenu} style={{height:data.height}}>
                         {el.subs.map(el2=>
                             <li key={el2.id}>
-                                <NavLink className={styles['submenu__title']} to={el2.path}>{el2.title}</NavLink>
+                                <Link className={styles['submenu__title']} to={el2.path}>{el2.title}</Link>
                             </li>)
                         }
                         </ul>

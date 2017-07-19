@@ -4,6 +4,7 @@ import shelves from './shelves'
 import styles from './index.css'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import * as actions from './actions'
 
 
 class ShelvesApp extends Component {

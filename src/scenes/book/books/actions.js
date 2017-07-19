@@ -32,4 +32,3 @@ export var fetchBooks = (books) => {
     }
 }
 
-// export default { AddBook, UpdateBook, DeleteBook, DownloadBooks }
