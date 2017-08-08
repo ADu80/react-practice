@@ -28,7 +28,9 @@ class BooksPage extends Component {
     }
 
     componentDidMount() {
-        this.fetchBooks(books)
+        setTimeout(()=>{
+            this.fetchBooks()
+        },3000);
         console.log('componentDidMount')
     }
 

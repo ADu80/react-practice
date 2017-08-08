@@ -1,34 +1,25 @@
-export var SHELVES_ADD = 'SHELVES_ADD'
-export var SHELVES_UPDATE = 'SHELVES_UPDATE'
-export var SHELVES_DELETE = 'SHELVES_DELETE'
-export var SHELVES_DOWNLOAD = 'SHELVES_DOWNLOAD'
+export const SHELVES_ADD = 'SHELVES_ADD'
+export const SHELVES_UPDATE = 'SHELVES_UPDATE'
+export const SHELVES_DELETE = 'SHELVES_DELETE'
+export const SHELVES_FETCH = 'SHELVES_FETCH'
 
 
-export var AddShelf = (shelf) => {
-    return {
-        type: SHELVES_ADD,
-        shelf
-    }
-}
+export const AddShelf = shelf => ({
+    type: SHELVES_ADD,
+    shelf
+})
 
-export var UpdateShelf = (shelf) => {
-    return {
-        type: SHELVES_UPDATE,
-        shelf
-    }
-}
+export const UpdateShelf = shelf => ({
+    type: SHELVES_UPDATE,
+    shelf
+})
 
-export var DeleteShelf = (shelf) => {
-    return {
-        type: SHELVES_DELETE,
-        shelf
-    }
-}
+export const DeleteShelf = shelf => ({
+    type: SHELVES_DELETE,
+    shelf
+})
 
-export var DownloadShelves = (shelves) => {
-    return {
-        type: SHELVES_DOWNLOAD,
-        shelves
-    }
-}
-
+export const fetchShelves = shelves => ({
+    type: SHELVES_FETCH,
+    shelves
+})

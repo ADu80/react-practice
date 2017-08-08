@@ -14,7 +14,8 @@ class ShelvesApp extends Component {
     }
 
     refreshData(e) {
-        this.props.DownloadShelves(shelves)
+        console.log(shelves)
+        this.props.fetchShelves(shelves)
     }
 
     changePrice(e, shelf) {
@@ -28,6 +29,7 @@ class ShelvesApp extends Component {
 
     render() {
         const { shelves } = this.props
+        console.log(shelves)
         return (
             <article>
                 <section className={styles.toolbar}>

@@ -1,34 +1,25 @@
-export var BOOKS_ADD = 'BOOKS_ADD'
-export var BOOKS_UPDATE = 'BOOKS_UPDATE'
-export var BOOKS_DELETE = 'BOOKS_DELETE'
-export var BOOKS_FETCH = 'BOOKS_FETCH'
+export const BOOKS_ADD = 'BOOKS_ADD'
+export const BOOKS_UPDATE = 'BOOKS_UPDATE'
+export const BOOKS_DELETE = 'BOOKS_DELETE'
+export const BOOKS_FETCH = 'BOOKS_FETCH'
 
 
-export var addBook = (book) => {
-    return {
-        type: BOOKS_ADD,
-        book
-    }
-}
+export const addBook = book => ({
+    type: BOOKS_ADD,
+    book
+})
 
-export var updateBook = (book) => {
-    return {
-        type: BOOKS_UPDATE,
-        book
-    }
-}
+export const updateBook = book => ({
+    type: BOOKS_UPDATE,
+    book
+})
 
-export var deleteBook = (book) => {
-    return {
-        type: BOOKS_DELETE,
-        book
-    }
-}
+export const deleteBook = book => ({
+    type: BOOKS_DELETE,
+    book
+})
 
-export var fetchBooks = (books) => {
-    return {
-        type: BOOKS_FETCH,
-        books
-    }
-}
-
+export const fetchBooks = books => ({
+    type: BOOKS_FETCH,
+    books
+})

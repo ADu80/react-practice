@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux'
-import { book, bookReducer } from './scenes/book'
+import { bookReducer } from './scenes/book'
 
 
-var state = { book }
+var state = { book: { books: [], shelves: [] } }
 
 var appReducer = combineReducers({
     book: bookReducer
